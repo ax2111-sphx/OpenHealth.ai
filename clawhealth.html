@@ -14,9 +14,10 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #FFFFFF;
+            background: linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #0F3460 100%);
             min-height: 100vh;
+            overflow-x: hidden;
         }
         
         .container {
@@ -27,165 +28,347 @@
         
         .header {
             text-align: center;
-            padding: 60px 0;
+            padding: 80px 0;
             color: white;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            z-index: -1;
         }
         
         .header h1 {
-            font-size: 3.5em;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-size: 4em;
+            margin-bottom: 25px;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+            background: linear-gradient(45deg, #00D4FF, #00FF88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
         }
         
         .header p {
-            font-size: 1.3em;
+            font-size: 1.4em;
             opacity: 0.9;
             max-width: 800px;
             margin: 0 auto;
+            color: #C0C0C0;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
         }
         
         .section {
-            background: white;
-            margin: 30px 0;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            background: rgba(26, 26, 46, 0.8);
+            margin: 40px 0;
+            padding: 50px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(0, 212, 255, 0.1);
             backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00D4FF, transparent);
+            animation: scanline 3s linear infinite;
+        }
+        
+        @keyframes scanline {
+            0% { left: -100%; }
+            100% { left: 100%; }
         }
         
         .section h2 {
-            color: #4a5568;
-            font-size: 2.2em;
-            margin-bottom: 30px;
+            color: #00D4FF;
+            font-size: 2.5em;
+            margin-bottom: 40px;
             text-align: center;
-            border-bottom: 3px solid #667eea;
-            padding-bottom: 15px;
+            text-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+            position: relative;
+        }
+        
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #00FF88, transparent);
+            border-radius: 2px;
         }
         
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
+            gap: 30px;
+            margin-top: 40px;
         }
         
         .feature-card {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            padding: 25px;
-            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(0, 255, 136, 0.1) 100%);
+            padding: 30px;
+            border-radius: 15px;
             color: white;
             text-align: center;
-            transition: transform 0.3s ease;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+        
+        .feature-card:hover::before {
+            transform: translateX(100%);
         }
         
         .feature-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 
+                0 25px 50px rgba(0, 212, 255, 0.2),
+                0 0 30px rgba(0, 255, 136, 0.1);
+            border-color: rgba(0, 255, 136, 0.5);
         }
         
         .feature-card h3 {
-            font-size: 1.4em;
-            margin-bottom: 15px;
+            font-size: 1.6em;
+            margin-bottom: 20px;
+            color: #00FF88;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
         }
         
         .feature-card p {
-            font-size: 1em;
+            font-size: 1.1em;
             opacity: 0.9;
+            color: #C0C0C0;
+            line-height: 1.7;
         }
         
         .input-layer, .ai-layer {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 35px;
         }
         
         .input-item, .ai-item {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-            border-left: 4px solid #667eea;
-            transition: all 0.3s ease;
+            background: rgba(15, 52, 96, 0.6);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 4px solid #00D4FF;
+            transition: all 0.4s ease;
+            position: relative;
+            backdrop-filter: blur(5px);
         }
         
         .input-item:hover, .ai-item:hover {
-            background: #e9ecef;
-            transform: translateX(5px);
+            background: rgba(15, 52, 96, 0.8);
+            transform: translateX(8px) scale(1.02);
+            border-left-color: #00FF88;
+            box-shadow: -10px 0 30px rgba(0, 212, 255, 0.2);
         }
         
         .input-item h4, .ai-item h4 {
-            color: #495057;
-            margin-bottom: 10px;
-            font-size: 1.2em;
+            color: #00D4FF;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            text-shadow: 0 0 8px rgba(0, 212, 255, 0.3);
         }
         
         .input-item ul, .ai-item ul {
-            color: #6c757d;
+            color: #E0E0E0;
             padding-left: 20px;
         }
         
         .input-item li, .ai-item li {
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            font-size: 1.05em;
+            line-height: 1.6;
         }
         
         .highlight {
-            background: linear-gradient(135deg, #ff6b6b, #ffa500);
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(0, 255, 136, 0.2));
             color: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
             text-align: center;
-            font-weight: bold;
+            font-weight: 600;
+            border: 1px solid rgba(0, 212, 255, 0.4);
+            font-size: 1.2em;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            animation: rotate 4s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         
         .cta-section {
             text-align: center;
-            padding: 60px 0;
+            padding: 80px 0;
             color: white;
+            position: relative;
         }
         
         .cta-button {
             display: inline-block;
-            background: linear-gradient(135deg, #ff6b6b, #ffa500);
-            color: white;
-            padding: 15px 40px;
+            background: linear-gradient(45deg, #00D4FF, #00FF88);
+            color: #1A1A2E;
+            padding: 18px 45px;
             text-decoration: none;
-            border-radius: 30px;
-            font-size: 1.2em;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            margin: 10px;
+            border-radius: 35px;
+            font-size: 1.3em;
+            font-weight: 700;
+            transition: all 0.4s ease;
+            margin: 15px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
         }
         
         .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4);
         }
         
         .icon {
-            font-size: 2em;
-            margin-bottom: 10px;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
         }
         
         @media (max-width: 768px) {
             .header h1 {
-                font-size: 2.5em;
+                font-size: 2.8em;
             }
             
             .header p {
-                font-size: 1.1em;
+                font-size: 1.2em;
             }
             
             .section {
-                padding: 25px;
+                padding: 30px;
+                margin: 20px 0;
+            }
+            
+            .section h2 {
+                font-size: 2em;
             }
             
             .features-grid {
                 grid-template-columns: 1fr;
+                gap: 20px;
             }
+            
+            .input-layer, .ai-layer {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .cta-button {
+                padding: 15px 35px;
+                font-size: 1.1em;
+                margin: 10px;
+            }
+        }
+        
+        /* 科技感粒子背景效果 */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #00D4FF;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.6; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+        }
+        
+        .particle:nth-child(odd) {
+            background: #00FF88;
+            animation-duration: 8s;
+        }
+        
+        .particle:nth-child(3n) {
+            animation-duration: 4s;
         }
     </style>
 </head>
 <body>
+    <!-- 科技感粒子背景 -->
+    <div class="particles" id="particles"></div>
+    
     <div class="container">
         <header class="header">
             <h1>🤖 ClawHealth.ai</h1>
@@ -365,5 +548,45 @@
             <a href="#" class="cta-button">商务合作</a>
         </div>
     </div>
+    
+    <script>
+        // 创建粒子背景效果
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // 页面加载完成后创建粒子
+        document.addEventListener('DOMContentLoaded', createParticles);
+        
+        // 添加滚动视差效果
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.header');
+            const speed = scrolled * 0.5;
+            parallax.style.transform = `translateY(${speed}px)`;
+        });
+        
+        // 添加卡片悬停音效模拟（视觉反馈）
+        document.querySelectorAll('.feature-card, .input-item, .ai-item').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.filter = 'brightness(1.2)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.filter = 'brightness(1)';
+            });
+        });
+    </script>
 </body>
 </html>
