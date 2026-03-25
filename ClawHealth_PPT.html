@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClawHealth.ai - 项目演示</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow: hidden;
+        }
+        
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            color: white;
+            text-align: center;
+        }
+        
+        .slide.active {
+            display: flex;
+        }
+        
+        .slide-content {
+            max-width: 1000px;
+            width: 100%;
+        }
+        
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 25px;
+            color: #ffd700;
+        }
+        
+        h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #87ceeb;
+        }
+        
+        p, li {
+            font-size: 1.3em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        ul {
+            text-align: left;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            padding-left: 10px;
+        }
+        
+        .highlight {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #ffd700;
+        }
+        
+        .emoji {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+        
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+        }
+        
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn:hover {
+            background: white;
+            color: #667eea;
+        }
+        
+        .slide-counter {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 1.1em;
+        }
+        
+        .title-slide {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .content-slide {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+        }
+        
+        .market-slide {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+        }
+        
+        .product-slide {
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+        }
+        
+        .business-slide {
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+        }
+        
+        .vision-slide {
+            background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+        }
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            text-align: left;
+        }
+        
+        .feature-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 15px 0;
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5em; }
+            h2 { font-size: 2em; }
+            h3 { font-size: 1.5em; }
+            p, li { font-size: 1.1em; }
+            .grid-2 { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 第1页：标题页 -->
+    <div class="slide title-slide active">
+        <div class="slide-content">
+            <h1>🤖 ClawHealth.ai</h1>
+            <h2>打通"吃、练、测、医"的AI健康管理Agent</h2>
+            <h3>构建您的个人健康数字孪生</h3>
+        </div>
+    </div>
+
+    <!-- 第2页：公司概况 -->
+    <div class="slide content-slide">
+        <div class="slide-content">
+            <h2>🏢 公司概况</h2>
+            <div class="highlight">
+                <h3>我们在做什么</h3>
+                <p>我们构建一个以AI为核心的健康管理平台，通过多模态输入（语音/图像/设备）整合用户的饮食、运动、体脂及医疗数据，提供持续、个性化的健康决策建议。</p>
+            </div>
+            
+            <div class="grid-2">
+                <div class="feature-box">
+                    <h3><span class="emoji">🔥</span>全数据打通</h3>
+                    <p>饮食 + 健身 + 体脂 + 医疗 + 可穿戴<br>行业内首次实现全链路整合</p>
+                </div>
+                <div class="feature-box">
+                    <h3><span class="emoji">🤖</span>AI Agent决策</h3>
+                    <p>自动分析 + 主动提醒 + 持续陪伴<br>从"工具"升级为"健康管理AI"</p>
+                </div>
+                <div class="feature-box">
+                    <h3><span class="emoji">🏋️</span>线上+线下融合</h3>
+                    <p>健身房/设备厂/教练接入<br>构建健康数据基础设施</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第3页：行业趋势 -->
+    <div class="slide market-slide">
+        <div class="slide-content">
+            <h2>📊 行业趋势与市场规模</h2>
+            
+            <div class="grid-2">
+                <div>
+                    <h3>🎯 行业趋势</h3>
+                    <ul>
+                        <li>健康管理需求爆发（肥胖率上升）</li>
+                        <li>AI个性化服务快速普及</li>
+                        <li>健身行业数字化（线上+线下融合）</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>💰 市场规模（三层分析）</h3>
+                    <div class="feature-box">
+                        <h4>TAM：￥8万亿+</h4>
+                        <p>中国健康管理市场</p>
+                    </div>
+                    <div class="feature-box">
+                        <h4>SAM：￥3000亿+</h4>
+                        <p>健身及运动健康市场</p>
+                    </div>
+                    <div class="feature-box">
+                        <h4>SOM：￥100亿级</h4>
+                        <p>AI健康管理赛道（30%+ CAGR）</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第4页：核心痛点 -->
+    <div class="slide content-slide">
+        <div class="slide-content">
+            <h2>❌ 核心痛点与机会</h2>
+            
+            <div class="grid-2">
+                <div>
+                    <h3>🔍 核心痛点</h3>
+                    <div class="feature-box">
+                        <h4>❌ 数据孤岛</h4>
+                        <p>饮食、运动、体脂、医疗完全割裂</p>
+                    </div>
+                    <div class="feature-box">
+                        <h4>❌ 无决策能力</h4>
+                        <p>用户记录了，但不知道怎么调整</p>
+                    </div>
+                    <div class="feature-box">
+                        <h4>❌ 健身房低效</h4>
+                        <p>有设备但无法转化价值</p>
+                    </div>
+                </div>
+                <div>
+                    <h3>🚀 机会总结</h3>
+                    <div class="highlight">
+                        <h4>👉 谁能整合数据 + 做决策层，谁就能成为健康领域的"操作系统"</h4>
+                    </div>
+                    
+                    <h3>📱 对标案例：Cal AI</h3>
+                    <ul>
+                        <li>用户：1500万+，收入：$30M+</li>
+                        <li>❌ 只做饮食，无运动/体脂/医疗数据</li>
+                        <li>👉 市场机会：从"单点工具"升级为"全链路AI健康Agent"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第5页：产品方案 - 输入层 -->
+    <div class="slide product-slide">
+        <div class="slide-content">
+            <h2>📥 产品方案 - 输入层</h2>
+            <h3>多模态输入，打通数据孤岛</h3>
+            
+            <div class="grid-2">
+                <div class="feature-box">
+                    <h3><span class="emoji">🥗</span>饮食记录</h3>
+                    <ul>
+                        <li>📸 拍照识别食物</li>
+                        <li>🎤 语音输入</li>
+                        <li>⌨️ 自然语言打字</li>
+                        <li>📊 自动生成热量和营养结构</li>
+                    </ul>
+                </div>
+                <div class="feature-box">
+                    <h3><span class="emoji">⚖️</span>体脂数据</h3>
+                    <ul>
+                        <li>🏢 健身房体脂秤接入</li>
+                        <li>📱 覆盖主流设备厂商</li>
+                        <li>📈 体重、体脂率、肌肉量</li>
+                        <li>🎯 各部位脂肪分布</li>
+                    </ul>
+                </div>
+                <div class="feature-box">
+                    <h3><span class="emoji">🏃</span>健身数据</h3>
+                    <ul>
+                        <li>🔗 接入健身房API</li>
+                        <li>📅 课程/训练记录</li>
+                        <li>💼 帮健身房卖课转化</li>
+                    </ul>
+                </div>
+                <div class="feature-box">
+                    <h3><span class="emoji">🏥</span>医疗数据</h3>
+                    <ul>
+                        <li>📋 体检报告上传</li>
+                        <li>📸 拍照/截图识别</li>
+                        <li>🔍 打通医疗数据孤岛</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第6页：产品方案 - AI决策层 -->
+    <div class="slide product-slide">
+        <div class="slide-content">
+            <h2>🧠 产品方案 - AI决策层</h2>
+            <h3>OpenClaw Agent技术，智能健康管理</h3>
+            
+            <div class="grid-2">
+                <div class="feature-box">
+                    <h3><span class="emoji">📊</span>自动报告系统</h3>
+                    <ul>
+                        <li>📅 日报/周报/月报</li>
+                        <li>⚖️ 能量摄入vs消耗</li>
+                        <li>📈 自动计算能量缺口</li>
+                        <li>📱 微信/飞书推送</li>
+                    </ul>
+                </div>
+                <div class="feature-box">
+                    <h3><span class="emoji">🥗</span>营养学诊断</h3>
+                    <ul>
+                        <li>🔬 分析营养结构</li>
+                        <li>⚠️ 指出潜在问题</li>
+                        <li>🇨🇳 <strong>中国人饮食模型</strong></li>
+                        <li>😌 家常菜轻松减脂</li>
+                    </ul>
+                </div>
+                <div class="feature-box">
+                    <h3><span class="emoji">🏋️</span>健身诊断</h3>
+                    <ul>
+                        <li>📊 分析运动结构</li>
+                        <li>💡 智能运动建议</li>
+                        <li>📚 运动工具包</li>
+                        <li>👨‍🏫 线上教练指导</li>
+                    </ul>
+                </div>
+                <div class="feature-box">
+                    <h3><span class="emoji">🏥</span>医疗风险管理</h3>
+                    <ul>
+                        <li>⏰ 复诊提醒</li>
+                        <li>⚠️ 风险预警</li>
+                        <li>📊 健康趋势监测</li>
+                        <li>🔄 动态风险评估</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第7页：商业模式 -->
+    <div class="slide business-slide">
+        <div class="slide-content">
+            <h2>💰 商业模式</h2>
+            
+            <div class="grid-2">
+                <div class="feature-box">
+                    <h3><span class="emoji">👤</span>C端用户</h3>
+                    <ul>
+                        <li>基础功能免费</li>
+                        <li>💎 VIP订阅：深度分析、AI教练、个性化方案</li>
+                    </ul>
+                </div>
+                <div class="feature-box">
+                    <h3><span class="emoji">🏢</span>B端健身房</h3>
+                    <ul>
+                        <li>SaaS系统</li>
+                        <li>用户数据管理</li>
+                        <li>提高卖课转化</li>
+                    </ul>
+                </div>
+                <div class="feature-box">
+                    <h3><span class="emoji">👨‍🏫</span>教练平台</h3>
+                    <ul>
+                        <li>教练入驻</li>
+                        <li>线上指导</li>
+                        <li>平台抽佣</li>
+                    </ul>
+                </div>
+                <div class="feature-box">
+                    <h3><span class="emoji">📺</span>广告收入</h3>
+                    <ul>
+                        <li>健康食品</li>
+                        <li>健身课程</li>
+                        <li>医疗服务</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第8页：发展路径 -->
+    <div class="slide content-slide">
+        <div class="slide-content">
+            <h2>🚀 发展路径（Go-To-Market）</h2>
+            
+            <div class="grid-2">
+                <div class="feature-box">
+                    <h3><span class="emoji">🎯</span>阶段1：冷启动（MVP）</h3>
+                    <ul>
+                        <li>重点：饮食 + AI日报</li>
+                        <li>用户：减脂人群</li>
+                    </ul>
+                </div>
+                <div class="feature-box">
+                    <h3><span class="emoji">🤝</span>阶段2：线下合作</h3>
+                    <ul>
+                        <li>接入健身房（如乐刻）</li>
+                        <li>打通体脂数据</li>
+                    </ul>
+                </div>
+                <div class="feature-box">
+                    <h3><span class="emoji">🌐</span>阶段3：生态构建</h3>
+                    <ul>
+                        <li>教练入驻</li>
+                        <li>内容平台（课程）</li>
+                    </ul>
+                </div>
+                <div class="feature-box">
+                    <h3><span class="emoji">💎</span>阶段4：平台化</h3>
+                    <ul>
+                        <li>接入设备厂商</li>
+                        <li>成为健康数据平台</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第9页：数据预测 -->
+    <div class="slide market-slide">
+        <div class="slide-content">
+            <h2>📈 未来数据预测</h2>
+            
+            <div class="grid-2">
+                <div class="feature-box">
+                    <h3>第1年目标</h3>
+                    <ul>
+                        <li>👥 用户：10万</li>
+                        <li>💰 付费率：5%</li>
+                        <li>📊 收入：约100万+</li>
+                    </ul>
+                </div>
+                <div class="feature-box">
+                    <h3>第3年目标</h3>
+                    <ul>
+                        <li>👥 用户：100万+</li>
+                        <li>💎 平台收入：千万级</li>
+                        <li>🚀 成为行业领导者</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="highlight">
+                <h3>📊 用户增长来源</h3>
+                <p>抖音/小红书（减脂内容）+ KOL合作 + 健身房导流</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第10页：愿景 -->
+    <div class="slide vision-slide">
+        <div class="slide-content">
+            <h1>🧭 愿景 Vision</h1>
+            <div class="highlight">
+                <h2>👉 成为个人健康的"操作系统"</h2>
+                <h3>构建每个人的健康数字孪生</h3>
+            </div>
+            
+            <div style="margin-top: 50px;">
+                <h3>🤝 谢谢聆听</h3>
+                <h2>ClawHealth.ai</h2>
+                <p>打通"吃、练、测、医"的AI健康管理Agent</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 导航 -->
+    <div class="navigation">
+        <button class="nav-btn" onclick="previousSlide()">⬅ 上一页</button>
+        <button class="nav-btn" onclick="nextSlide()">下一页 ➡</button>
+    </div>
+
+    <!-- 页码计数器 -->
+    <div class="slide-counter">
+        <span id="current-slide">1</span> / <span id="total-slides">10</span>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        document.getElementById('total-slides').textContent = totalSlides;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            document.getElementById('current-slide').textContent = currentSlide + 1;
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function previousSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        // 键盘导航
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                previousSlide();
+            }
+        });
+
+        // 鼠标滚轮导航
+        document.addEventListener('wheel', function(e) {
+            if (e.deltaY > 0) {
+                nextSlide();
+            } else {
+                previousSlide();
+            }
+        });
+    </script>
+</body>
+</html>
